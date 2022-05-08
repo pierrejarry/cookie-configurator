@@ -32,6 +32,7 @@ body {
     --subtitle-color: #999;
     --main-color: #1cc691;
     --rating-color: #cf7463;
+    --success-background: #e8f9f4;
 }
 
 
@@ -65,6 +66,12 @@ body {
 
 .strong-text {
     font-weight: bold;
+}
+
+.close-icon {
+    right: 30px;
+    top: 30px;
+    position: absolute;        
 }
 
 /* Circular Chart */
@@ -123,6 +130,7 @@ main {
 
 .main-content__header {
     align-items: center;
+    border-bottom: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
     padding: 60px 70px;
@@ -133,6 +141,10 @@ main {
         display: flex;
         justify-content: flex-start;
         padding: 60px 70px;
+    }
+
+    .main-content__header .circular-chart {
+        height: 80px;
     }
 
 .main-content__header__info {
@@ -149,6 +161,32 @@ main {
     margin-left: auto;
 }
 
+/* Main Content Main */
+
+.main-content__main {
+    padding: 75px 70px 100px;
+}
+
+.main-content__info {
+    align-items: center;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+}
+
+    .main-content__info__image {
+        background-color: var(--success-background);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 50px;
+    }
+
+    .main-content__info p {
+        margin: 0 90px 0 60px
+    }
 
 /* ------------------------------------------------------
      [ Animations ]
