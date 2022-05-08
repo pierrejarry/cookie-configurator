@@ -13,15 +13,149 @@
     word-wrap: break-word;
 }
 
-:root {
-    --bodyBackground: #f1f1f1;
-    --basicTextColor: #333;
-}
-
 body {
-    color: var(--basicTextColor);
-    background: var(--bodyBackground);
+    color: var(--basic-text-color);
+    background: var(--body-background);
     line-height: 1.4;
     font-weight: 400;
-    font-size: 16px;
+    font: 16px Arial, sans-serif;
+    padding: 0 52px;
 }
+
+/* Variables */
+
+:root {
+    --body-background: #f1f1f1;
+    --basic-text-color: #333;
+    --main-background: #fff;
+    --border-color: #d6d6d6;
+    --subtitle-color: #999;
+    --main-color: #1cc691;
+    --rating-color: #cf7463;
+}
+
+
+/* ------------------------------------------------------
+     [ General Style ]
+-------------------------------------------------------*/
+
+.text-center {
+    text-align: center;
+}
+
+.logo {
+    width: 338px;
+}
+
+.subtitle {
+    color: var(--subtitle-color);
+    font-size: 14px;
+}
+
+.url-link {
+    color: var(--basic-text-color);
+    font-weight: bold;
+    text-decoration: none;
+    transition: .5s all;
+}
+
+    .url-link:hover {
+        color: var(--main-color);
+    }
+
+.strong-text {
+    font-weight: bold;
+}
+
+/* Circular Chart */
+
+.circular-chart-container {
+    position: relative;
+}
+
+.circular-chart {
+    display: block;
+    margin: 10px auto;
+    max-width: 80%;
+    max-height: 80px;
+  }
+  
+  .circle {
+    stroke: var(--rating-color);
+    fill: none;
+    stroke-width: 2.8;
+    stroke-linecap: round;
+    animation: progress 1s ease-out forwards;
+  }
+
+.circular-chart-container p {
+    color: var(--rating-color);
+    font-size: 24px;
+    font-weight: bold;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+  
+
+/* ------------------------------------------------------
+     [ Header ]
+-------------------------------------------------------*/
+
+header {
+    padding: 52px 0;
+}
+
+
+/* ------------------------------------------------------
+     [ Main Content ]
+-------------------------------------------------------*/
+
+main {
+    background-color: var(--main-background);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    width: 100%;
+}
+
+/* Main Content Header */
+
+.main-content__header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 60px 70px;
+}
+
+    .main-content__header {
+        align-items: center;
+        display: flex;
+        justify-content: flex-start;
+        padding: 60px 70px;
+    }
+
+.main-content__header__info {
+    margin-left: 36px;
+}
+
+    .main-content__header__info .subtitle {
+        margin-top: 10px;
+    }
+
+.main-content__header__rating {
+    align-items: center;
+    display: flex;
+    margin-left: auto;
+}
+
+
+/* ------------------------------------------------------
+     [ Animations ]
+-------------------------------------------------------*/
+
+@keyframes progress {
+    0% {
+      stroke-dasharray: 0 100;
+    }
+  }
