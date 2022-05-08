@@ -19,7 +19,7 @@ body {
     line-height: 1.4;
     font-weight: 400;
     font: 16px Arial, sans-serif;
-    padding: 0 52px;
+    padding: 0 26px;
 }
 
 /* Variables */
@@ -33,6 +33,7 @@ body {
     --main-color: #1cc691;
     --rating-color: #cf7463;
     --success-background: #e8f9f4;
+    --switch-background-color: #dedede;
 }
 
 
@@ -45,7 +46,7 @@ body {
 }
 
 .logo {
-    width: 338px;
+    width: 170px;
 }
 
 .subtitle {
@@ -69,9 +70,11 @@ body {
 }
 
 .close-icon {
-    right: 30px;
-    top: 30px;
-    position: absolute;        
+    cursor: pointer;
+    right: 15px;
+    top: 15px;
+    position: absolute;   
+    width: 16px;     
 }
 
 /* Circular Chart */
@@ -82,9 +85,9 @@ body {
 
 .circular-chart {
     display: block;
-    margin: 10px auto;
+    margin: 5px auto;
     max-width: 80%;
-    max-height: 80px;
+    max-height: 65px;
   }
   
   .circle {
@@ -97,7 +100,6 @@ body {
 
 .circular-chart-container p {
     color: var(--rating-color);
-    font-size: 24px;
     font-weight: bold;
     left: 50%;
     position: absolute;
@@ -105,13 +107,84 @@ body {
     transform: translateX(-50%) translateY(-50%);
 }
   
+/* Toggle Switch */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--switch-background-color);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        left: 4px;
+        bottom: 4px;
+        background-color: var(--main-background);
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+  
+  input:checked + .slider {
+    background-color: var(--main-color);
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px var(--main-color);
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  /* Title */
+
+  .title {
+      align-items: center;
+      display: flex;
+  }
+
+  .title h2 {
+      margin-left: 10px;
+  }
 
 /* ------------------------------------------------------
      [ Header ]
 -------------------------------------------------------*/
 
 header {
-    padding: 52px 0;
+    padding: 26px 0;
 }
 
 
@@ -133,26 +206,30 @@ main {
     border-bottom: 1px solid var(--border-color);
     display: flex;
     justify-content: space-between;
-    padding: 60px 70px;
+    padding: 30px 35px;
 }
 
     .main-content__header {
         align-items: center;
         display: flex;
         justify-content: flex-start;
-        padding: 60px 70px;
+        padding: 30px 35px;
+    }
+
+    .main-content__header img {
+        width: 70px;
     }
 
     .main-content__header .circular-chart {
-        height: 80px;
+        height: 65px;
     }
 
 .main-content__header__info {
-    margin-left: 36px;
+    margin-left: 18px;
 }
 
     .main-content__header__info .subtitle {
-        margin-top: 10px;
+        margin-top: 5px;
     }
 
 .main-content__header__rating {
@@ -164,28 +241,37 @@ main {
 /* Main Content Main */
 
 .main-content__main {
-    padding: 75px 70px 100px;
+    padding: 40px 35px 50px;
 }
 
-.main-content__info {
+.main-content__main__info {
     align-items: center;
     border: 1px solid var(--border-color);
     border-radius: 5px;
     display: flex;
     justify-content: flex-start;
+    margin-bottom: 60px;
     position: relative;
 }
 
-    .main-content__info__image {
+    .main-content__main__info__image {
         background-color: var(--success-background);
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 50px;
+        padding: 25px;
     }
 
-    .main-content__info p {
-        margin: 0 90px 0 60px
+        .main-content__main__info__image img {
+            width: 44px;
+        }
+
+    .main-content__main__info p {
+        margin: 0 45px 0 30px
+    }
+
+    .main-content__main__cookie-banner {
+        margin-top: 20px;
     }
 
 /* ------------------------------------------------------
