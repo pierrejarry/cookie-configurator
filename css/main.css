@@ -94,6 +94,12 @@ h3 {
     flex-wrap: wrap;
 }
 
+.flex-center {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
 ul {
     display: flex;
     flex-wrap: wrap;
@@ -105,14 +111,16 @@ ul {
     border: 1px solid var(--list-item-border);
     border-radius: 5px;
     cursor: pointer;
-    height: 100%;
+    height: 56px;
+    margin-right: 15px;
     transition: .5s all;
-    width: 100%;
+    width: 146px;
 }
 
     .list-item:hover, .list-item.active {
         border-color: var(--main-color);
         color: var(--main-color);
+        font-weight: bold;
         outline: 4px solid var(--success-background);
     }
 
@@ -136,12 +144,17 @@ ul {
         height: 88px;
         justify-content: center;
         min-width: 165px;
+        width: auto;
     }
 
         .list-item.custom img {
             height: 100%;
             width: 100%;
         }
+
+    .list-item .icon {
+        margin-right: 10px;
+    }
 
 
 /* Circular Chart */
@@ -352,7 +365,6 @@ main {
             align-items: center;
             display: flex;
             flex-direction: column;
-            margin-right: 15px;
         }
 
             .theme-selection li:last-child {
@@ -365,6 +377,7 @@ main {
         }
 
         .subsection__first {
+            margin-bottom: 15px;
             margin-right: 70px
         }
 
