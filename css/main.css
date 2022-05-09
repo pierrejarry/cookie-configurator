@@ -18,7 +18,7 @@ body {
     background: var(--body-background);
     line-height: 1.4;
     font-weight: 400;
-    font: 16px Arial, sans-serif;
+    font: 14px Arial, sans-serif;
     padding: 0 26px;
 }
 
@@ -36,6 +36,9 @@ body {
     --switch-background-color: #dedede;
     --title-grey-color: #707070;
     --list-item-border: #5e5e5e;
+    --link-color: #636262;
+    --checkbox-info-background: #fff4e6;
+    --checkbox-info-color: #cc6f43;
 }
 
 
@@ -99,6 +102,15 @@ h3 {
     display: flex;
     justify-content: center;
 }
+
+.link {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+    .link:hover {
+        text-decoration: underline;
+    }
 
 ul {
     display: flex;
@@ -248,16 +260,118 @@ ul {
     border-radius: 50%;
   }
 
-  /* Title */
+/* Checkbox */
 
-  .title {
-      align-items: center;
-      display: flex;
+.checkbox {
+    align-items: center;
+    display: flex;
+    line-height: 20px;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 
-  .title h2 {
-      margin-left: 20px;
+    .checkbox input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+    }
+
+.checkmark {
+    background-color: var(--main-background);
+    border: 1px solid var(--border-color);
+    border-radius: 2px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    
+}
+  
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
   }
+  
+  .checkbox input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  .checkbox .checkmark:after {
+    left: 7px;
+    top: 4px;
+    width: 5px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  .checkbox input:checked ~ .checkmark:after {
+    border-color: var(--main-color);
+  }
+
+.info-icon {
+    margin-left: 10px;
+    width: 16px;
+}
+
+/* Tooltip */
+.tooltip {
+    position: relative;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    min-width: 180px;
+    background-color: var(--checkbox-info-background);
+    color: var(--checkbox-info-color);
+    text-align: center;
+    left: 140%;
+    padding: 5px;
+    border-radius: 6px;
+    position: absolute;
+    top: -10px;
+    transition: .25s all ease-out;
+    z-index: 1;
+}
+
+.tooltip .tooltiptext::after {
+  content: " ";
+  position: absolute;
+  top: 18px;
+  right: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent var(--checkbox-info-background) transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+
+/* Title */
+
+.title {
+    align-items: center;
+    display: flex;
+}
+
+.title h2 {
+    margin-left: 20px;
+}
 
 /* ------------------------------------------------------
      [ Header ]
@@ -365,6 +479,11 @@ main {
             align-items: center;
             display: flex;
             flex-direction: column;
+            margin-right: 15px;
+        }
+
+        .theme-selection li .list-item {
+            margin: 0;
         }
 
             .theme-selection li:last-child {
@@ -396,7 +515,37 @@ main {
             }
     
 
+.checkbox-info {
+    align-items: center;
+    background-color: var(--checkbox-info-background);
+    color: var(--checkbox-info-color);
+    display: none;
+    margin-left: 10px;
+    margin-bottom: 25px;
+    padding: 8px 55px 8px 14px;
+    position: relative;
+}
 
+    .checkbox-info img {
+        margin-right: 10px;
+        width: 28px;
+    }
+
+    .checkbox-info.show {
+        display: inline-flex;
+    }
+
+    .checkbox-info:before {
+        content: '';
+        height: 0; 
+        border-left: 2px solid var(--checkbox-info-background);
+        border-right: 9px solid transparent;
+        border-bottom: 12px solid var(--checkbox-info-background);
+        left: 0;
+        position: absolute;
+        top: -6px;
+        width: 0; 
+    }
 
 /* ------------------------------------------------------
      [ Animations ]
