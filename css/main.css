@@ -530,6 +530,22 @@ main {
         margin-top: 20px;
     }
 
+        .main-content__main__cookie-banner.inactive .subsection {
+            pointer-events: none;
+        }
+
+        .main-content__main__cookie-banner.inactive .subsection label,
+        .main-content__main__cookie-banner.inactive .subsection .list-item,
+        .main-content__main__cookie-banner.inactive .subsection a,
+        .main-content__main__cookie-banner.inactive .subsection p {
+            border-color: var(--border-color);
+            color: var(--border-color);
+        }
+
+        .main-content__main__cookie-banner.inactive .subsection img {
+            opacity: 0.25;
+        }
+
     .subsection h3 {
         margin-bottom: 15px
     }
