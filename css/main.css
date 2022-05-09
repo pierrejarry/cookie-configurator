@@ -39,6 +39,7 @@ body {
     --link-color: #636262;
     --checkbox-info-background: #fff4e6;
     --checkbox-info-color: #cc6f43;
+    --secondary-btn-color: #919191;
 }
 
 
@@ -91,6 +92,10 @@ h3 {
 .subsection {
     margin: 35px 0 45px;
 }
+
+    .subsection.no-margin-bottom {
+        margin-bottom: 0;
+    }
 
 .flex {
     display: flex;
@@ -188,7 +193,7 @@ ul {
     fill: none;
     stroke-width: 2.8;
     stroke-linecap: round;
-    animation: progress 1s ease-out forwards;
+    animation: progress 1s ease-in-out forwards;
   }
 
 .circular-chart-container p {
@@ -395,6 +400,38 @@ ul {
     margin-left: 20px;
 }
 
+/* Buttons */
+
+.btn {
+    background-color: var(--main-color);
+    border: 2px solid var(--main-color);
+    border-radius: 35px;
+    color: var(--main-background);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    height: 66px;
+    transition: .5s all ease-in;
+    width: 330px;
+}
+
+    .btn:hover {
+        color: var(--main-color);
+        background: transparent;
+    }
+
+.btn.secondary {
+    background: none;
+    border: none;
+    color: var(--secondary-btn-color);
+    transition: .5s all ease-in;
+    width: auto;
+}
+
+    .btn.secondary:hover {
+        color: var(--main-color);
+    }
+
 /* ------------------------------------------------------
      [ Header ]
 -------------------------------------------------------*/
@@ -579,6 +616,32 @@ main {
         .privacy-policy .list-item.img img {
             margin-right: -10px;
         }
+
+
+/* Main Content Footer */
+
+.main-content__footer {
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 35px;
+}
+
+
+/* ------------------------------------------------------
+     [ Footer ]
+-------------------------------------------------------*/
+
+footer {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+
+    footer a {
+        padding: 0 16px;
+    }
 
 /* ------------------------------------------------------
      [ Animations ]
