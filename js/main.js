@@ -1,27 +1,32 @@
+/* ------------------------------------------------------
+     [ Constants ]
+-------------------------------------------------------*/
+
 const infoDiv = document.querySelector('.main-content__main__info');
 const closeIcon = document.querySelector('.main-content__main__info .close-icon');
 const iabCheckbox = document.querySelector('.iab');
 const checkboxInfo = document.querySelector('.checkbox-info');
 const resetSettingsBtn = document.getElementById('resetSettings');
-
 const liElements = document.querySelectorAll('li');
-
 const mainSection = document.querySelectorAll('.main-section');
 
+/* ------------------------------------------------------
+     [ Functions ]
+-------------------------------------------------------*/
 
 /* Close Information div when clicking on close icon */
 const closeDiv = () => infoDiv.remove();
+
 const toggleCheckboxInfo = () => checkboxInfo.classList.toggle('show');
 const closeCheckboxInfo = () => checkboxInfo.classList.remove('show');
 
 const disableSection = (s) => {
-    const switchElem = s.target;
-    const switchParent = switchElem.closest('.main-section');
+    const switchParent = s.closest('.main-section');
     const checkboxInputs = switchParent.querySelectorAll('.section_checkbox');
     const listItems = switchParent.querySelectorAll('.list-item');
 
     switchParent.classList.add('inactive');
-    switchElem.checked = false;
+    s.checked = false;
 
     for (checkbox of checkboxInputs) {
         checkbox.checked = false
@@ -39,14 +44,24 @@ const disableSection = (s) => {
 const handlePageSettings = (s) => {
     const switchElem = s.target;
     const switchParent = switchElem.closest('.main-section');
-    console.log("coucou");
+    
     if (switchElem.checked) {
         switchParent.classList.remove('inactive');
     } else {
-        disableSection(s);
+        disableSection(s.target);
     }
 }
 
+const resetSettings = () => {
+    for (let i = 0; i < mainSection.length; i++) {
+        const toggleSwitch = mainSection[i].querySelector('.toggle-switch');
+        disableSection(toggleSwitch);
+    }
+}
+
+/* ------------------------------------------------------
+     [ Event Listener ]
+-------------------------------------------------------*/
 
 /* Add active class when clicking on an item list */
 for (let i = 0; i < liElements.length; i++) {
@@ -74,10 +89,10 @@ iabCheckbox.addEventListener('change', toggleCheckboxInfo);
 
 // Handle Cookie Banner Settings
 for (let i = 0; i < mainSection.length; i++) {
-    const toggleSwitch = mainSection[i].querySelector('.switch');
+    const toggleSwitch = mainSection[i].querySelector('.toggle-switch');
 
     toggleSwitch.addEventListener('change', handlePageSettings.bind(toggleSwitch));
 }
 
 // Reset all settings
-// resetSettingsBtn.addEventListener('click', resetSettings);
+resetSettingsBtn.addEventListener('click', resetSettings);
