@@ -538,7 +538,8 @@ main {
     .main-section.inactive .subsection label,
     .main-section.inactive .subsection .list-item,
     .main-section.inactive .subsection a,
-    .main-section.inactive .subsection p {
+    .main-section.inactive .subsection p,
+    .main-section.inactive .subsection h3 {
         border-color: var(--border-color);
         color: var(--border-color);
     }
