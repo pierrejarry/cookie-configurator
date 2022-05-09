@@ -2,42 +2,48 @@ const infoDiv = document.querySelector('.main-content__main__info');
 const closeIcon = document.querySelector('.main-content__main__info .close-icon');
 const iabCheckbox = document.querySelector('.iab');
 const checkboxInfo = document.querySelector('.checkbox-info');
-const cookieBannerSwitchInput = document.getElementById('cookieBannerSwitch');
 const resetSettingsBtn = document.getElementById('resetSettings');
 
 const liElements = document.querySelectorAll('li');
 
-const cookieBannerSection = document.querySelector('.main-content__main__cookie-banner');
+const mainSection = document.querySelectorAll('.main-section');
+
 
 /* Close Information div when clicking on close icon */
 const closeDiv = () => infoDiv.remove();
 const toggleCheckboxInfo = () => checkboxInfo.classList.toggle('show');
 const closeCheckboxInfo = () => checkboxInfo.classList.remove('show');
 
-const resetSettings = () => {
-    cookieBannerSwitchInput.checked = false
+const disableSection = (s) => {
+    const switchElem = s.target;
+    const switchParent = switchElem.closest('.main-section');
+    const checkboxInputs = switchParent.querySelectorAll('.section_checkbox');
+    const listItems = switchParent.querySelectorAll('.list-item');
+
+    switchParent.classList.add('inactive');
+    switchElem.checked = false;
+
+    for (checkbox of checkboxInputs) {
+        checkbox.checked = false
+    }
+
+    for (item of listItems) {
+        if (item.classList.contains('active')) {
+            item.classList.remove('active')
+        }
+    }
+
+    closeCheckboxInfo();
 }
 
-const handleCookieBannerSettings = () => {
-    if (cookieBannerSwitchInput.checked) {
-        cookieBannerSection.classList.remove('inactive');
+const handlePageSettings = (s) => {
+    const switchElem = s.target;
+    const switchParent = switchElem.closest('.main-section');
+    console.log("coucou");
+    if (switchElem.checked) {
+        switchParent.classList.remove('inactive');
     } else {
-        const checkboxInputs = cookieBannerSection.querySelectorAll('.cookie_checkbox');
-        const listItems = cookieBannerSection.querySelectorAll('.list-item');
-
-        cookieBannerSection.classList.add('inactive');
-
-        for (checkbox of checkboxInputs) {
-            checkbox.checked = false
-        }
-
-        for (item of listItems) {
-            if (item.classList.contains('active')) {
-                item.classList.remove('active')
-            }
-        }
-
-        closeCheckboxInfo();
+        disableSection(s);
     }
 }
 
@@ -66,8 +72,12 @@ closeIcon.addEventListener('click', closeDiv);
 // Show information when checking IAB Checkbox
 iabCheckbox.addEventListener('change', toggleCheckboxInfo);
 
-// Reset all settings
-resetSettingsBtn.addEventListener('click', resetSettings);
-
 // Handle Cookie Banner Settings
-cookieBannerSwitchInput.addEventListener('change', handleCookieBannerSettings);
+for (let i = 0; i < mainSection.length; i++) {
+    const toggleSwitch = mainSection[i].querySelector('.switch');
+
+    toggleSwitch.addEventListener('change', handlePageSettings.bind(toggleSwitch));
+}
+
+// Reset all settings
+// resetSettingsBtn.addEventListener('click', resetSettings);
