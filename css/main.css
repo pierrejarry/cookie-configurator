@@ -141,6 +141,7 @@ ul {
         display: flex;
         height: 88px;
         justify-content: flex-end;
+        overflow: hidden;
         width: 165px;
     }
 
@@ -262,7 +263,7 @@ ul {
 
 /* Checkbox */
 
-.checkbox {
+.checkbox, .radio {
     align-items: center;
     display: flex;
     line-height: 20px;
@@ -276,7 +277,7 @@ ul {
     user-select: none;
   }
 
-    .checkbox input {
+    .checkbox input, .radio input {
         position: absolute;
         opacity: 0;
         cursor: pointer;
@@ -293,7 +294,6 @@ ul {
     left: 0;
     height: 20px;
     width: 20px;
-    
 }
   
   .checkmark:after {
@@ -302,7 +302,8 @@ ul {
     display: none;
   }
   
-  .checkbox input:checked ~ .checkmark:after {
+  .checkbox input:checked ~ .checkmark:after,
+  .radio input:checked ~ .checkmark:after {
     display: block;
   }
 
@@ -327,7 +328,28 @@ ul {
     width: 16px;
 }
 
+/* Radio */
+
+.radio {
+    display: inline-block;
+    margin-right: 30px;
+}
+
+.radio .checkmark {
+    border-radius: 50%;
+}
+
+.radio .checkmark:after {
+    top: 5px;
+    left: 5px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--main-color);
+  }
+
 /* Tooltip */
+
 .tooltip {
     position: relative;
 }
@@ -475,14 +497,15 @@ main {
         margin-bottom: 15px
     }
 
-        .theme-selection li {
+        .theme-selection li, .privacy-policy li {
             align-items: center;
             display: flex;
             flex-direction: column;
             margin-right: 15px;
         }
 
-        .theme-selection li .list-item {
+        .theme-selection li .list-item,
+        .privacy-policy li .list-item {
             margin: 0;
         }
 
@@ -490,7 +513,7 @@ main {
                 margin-right: 0;
             }
 
-        .theme-selection p {
+        .theme-selection p, .privacy-policy p {
             font-size: 14px;
             margin-top: 10px;
         }
@@ -546,6 +569,16 @@ main {
         top: -6px;
         width: 0; 
     }
+
+    /* Main Content Privacy Policy */
+
+    .privacy-policy .list-item.img {
+        align-items: center;
+    }
+
+        .privacy-policy .list-item.img img {
+            margin-right: -10px;
+        }
 
 /* ------------------------------------------------------
      [ Animations ]
